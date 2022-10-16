@@ -1,4 +1,4 @@
-package com.mohamedandmostafa.foody
+package com.mohamedandmostafa.foody.data.database
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -15,5 +15,5 @@ interface RecipesDao {
     suspend fun insertRecipes(recipesEntity: RecipesEntity)
 
     @Query("SELECT * FROM RECIPES_TABLE ORDER BY id ASC")
-    suspend fun readRecipes(): Flow<List<FoodRecipe>>
+     fun readRecipes(): Flow<List<RecipesEntity>>
 }

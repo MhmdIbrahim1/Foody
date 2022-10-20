@@ -14,6 +14,7 @@ import com.mohamedandmostafa.foody.viewmodels.MainViewModel
 import com.mohamedandmostafa.foody.R
 import com.mohamedandmostafa.foody.adapters.RecipesAdapter
 import com.mohamedandmostafa.foody.util.NetworkResult
+import com.mohamedandmostafa.foody.util.observeOnce
 import com.mohamedandmostafa.foody.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_recipes.view.*
@@ -56,10 +57,10 @@ class RecipesFragment : Fragment() {
 
     private fun readDatabase() {
         lifecycleScope.launch {
-            Log.d("RecipesFragment", "ReadDatabase data called")
-            mainViewModel.readRecipe.observe(viewLifecycleOwner) { database ->
+            mainViewModel.readRecipe.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
-                    mAdapter.setData(database[0].foodRecipe)
+                    Log.d("RecipesFragment", "ReadDatabase data called")
+                mAdapter.setData(database[0].foodRecipe)
                     hideShimmerEffect()
                 }else{
                     requestApiData()

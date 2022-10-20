@@ -23,7 +23,7 @@ class MainViewModel @ViewModelInject constructor(
 
     val readRecipe: LiveData<List<RecipesEntity>> = repository.local.readDatabase(). asLiveData()
 
-    fun insetRecipes(recipesEntity: RecipesEntity) =
+    private fun insertRecipes(recipesEntity: RecipesEntity) =
         viewModelScope.launch (Dispatchers.IO){
             repository.local.insertRecipes(recipesEntity)
         }
@@ -59,7 +59,7 @@ class MainViewModel @ViewModelInject constructor(
 
     private fun offlineCashRecipes(foodRecipe: FoodRecipe) {
         val recipesEntity = RecipesEntity(foodRecipe)
-        insetRecipes(recipesEntity)
+        insertRecipes(recipesEntity)
     }
 
     private fun handleFoodResponse(response: Response<FoodRecipe>): NetworkResult<FoodRecipe> {

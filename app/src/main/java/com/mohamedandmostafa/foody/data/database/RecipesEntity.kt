@@ -7,8 +7,9 @@ import com.mohamedandmostafa.foody.util.Constants.Companion.RECIPES_TABLE
 
 @Entity(tableName = RECIPES_TABLE)
 class RecipesEntity(
-    foodRecipe: FoodRecipe
+   var foodRecipe: FoodRecipe
 ){
+
 
     @PrimaryKey(autoGenerate = false)
     var id : Int = 0

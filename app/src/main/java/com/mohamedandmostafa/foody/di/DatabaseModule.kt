@@ -1,9 +1,7 @@
 package com.mohamedandmostafa.foody.di
 
 import android.content.Context
-import androidx.room.Database
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.mohamedandmostafa.foody.data.database.RecipesDataBase
 import com.mohamedandmostafa.foody.util.Constants.Companion.DATABASE_NAME
 import dagger.Module
